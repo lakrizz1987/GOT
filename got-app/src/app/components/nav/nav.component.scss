@@ -30,7 +30,7 @@
         transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
         img {
-            width: 200px;
+            width: 180px;
 
             @media (max-width: 768px) {
                 width: 150px;
@@ -50,7 +50,7 @@
             position: absolute;
             z-index: $z-index-navbar - 1;
             top: $navbar-height;
-            left: -100vw;
+            left: -150vw;
             background-color: $got-black;
             padding: 40px;
             transition: all 0.5s linear;
