@@ -1,0 +1,26 @@
+<nav class="navbar">
+    <div class="navbar-brand">
+        <a routerLink="/">
+            <img src="assets/images/House-of-dragon.jpg" alt="Game of Thrones Logo">
+        </a>
+    </div>
+
+    <ng-container *ngIf="isDesktop">
+        <ul class="navbar-links">
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/favorites">Favorites</a></li>
+        </ul>
+    </ng-container>
+
+    <ng-container *ngIf="!isDesktop">
+        <button class="navbar-toggle" (click)="toggleMenu()">
+            <img [ngClass]="{'rotate' : menuOpen}" src="assets/images/logo.png" alt="Menu Icon">
+        </button>
+
+        <ul [ngClass]="{'active' : menuOpen}" class="navbar-links">
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/favorites">Favorites</a></li>
+        </ul>
+    </ng-container>
+
+</nav>
