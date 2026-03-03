@@ -1,0 +1,62 @@
+@use '../../definitions.scss' as *;
+
+.got-footer {
+    width: 100%;
+    padding: 20px;
+    background-color: $got-black;
+    color: $got-gold-light;
+    border-top: 1px solid $got-white;
+    font-family: $got-font-family;
+    text-align: center;
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .house-motto {
+        font: italic 18px $got-font-family;
+        letter-spacing: 3px;
+        opacity: 0.8;
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 20px;
+
+        a {
+            color: $got-white;
+            font: normal 14px $got-font-family;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            @media (max-width: 768px) {
+                font-size: 12px;
+            }
+
+            &:hover {
+                color: $got-gold-dark;
+                text-shadow: 0 0 5px $got-gold-shadow;
+            }
+        }
+    }
+
+    .copyright {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 12px;
+        opacity: 0.5;
+        letter-spacing: 1px;
+        margin-top: 10px;
+
+        @media (max-width: 768px) {
+            font-size: 10px;
+        }
+    }
+}

@@ -12,6 +12,7 @@ import { charactersReducer } from './store/characters.reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/nav/nav.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     CharacterListComponent,
     CharacterDetailComponent,
     NavbarComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
