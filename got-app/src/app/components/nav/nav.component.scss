@@ -1,33 +1,33 @@
+@use '../../deffinitions.scss' as *;
 
 .navbar {
-    height: 98px;
+    width: 100%;
+    height: $navbar-height;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px;
-    background-color: black;
-    color: white;
-    position: relative;
-    z-index: 1000;
+    padding: 0 30px;
+    background-color: $got-black;
+    color: $got-white;
+    //position: relative;
+    z-index: $z-index-navbar;
 
     ul {
         margin: 0;
         padding: 0;
 
         a:hover {
-            color: #a7976e;
+            color: $got-gold-dark;
             transform: translateY(-3px) scale(1.1);
-            text-shadow: 0 0 1px rgba(167, 151, 110, 0.6);
         }
     }
 
     a {
         display: inline-block;
-        color: #f0e6d2;
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        font: 20px $got-font-family;
+        color: $got-gold-light;
         text-decoration: none;
-        font-weight: bold;
-        font-size: 24px;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
         img {
             width: 200px;
@@ -40,41 +40,37 @@
         list-style: none;
 
         @media (max-width: 768px) {
-            //display: none;
+            width: 100%;
+            height: calc(100vh - #{$navbar-height + 1px});
             flex-direction: column;
             position: absolute;
-            top: 99%;
+            top: $navbar-height;
             left: -100vw;
-            width: 100%;
-            height: calc(100vh - 99px);
-            background-color: black;
+            background-color: $got-black;
             padding: 40px;
             transition: all 0.5s linear;
 
             &.active {
                 left: 0;
             }
-
         }
     }
 
     .navbar-toggle {
+        height: 100%;
         border: none;
         padding: 0;
+        background-color: $got-black;
         cursor: pointer;
-        background: black;
-        height: 100%;
 
         img {
             width: 100px;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 
             &.rotate {
                 transform: rotate(360deg);
             }
         }
-
-        ;
     }
 }

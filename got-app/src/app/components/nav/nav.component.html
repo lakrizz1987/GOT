@@ -7,8 +7,8 @@
 
     <ng-container *ngIf="isDesktop">
         <ul class="navbar-links">
-            <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/favorites">Favorites</a></li>
+            <li><a href="javascript:void(0)" (click)="goTo('/', $event)">Characters</a></li>
+            <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
         </ul>
     </ng-container>
 
@@ -18,8 +18,8 @@
         </button>
 
         <ul [ngClass]="{'active' : menuOpen}" class="navbar-links">
-            <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/favorites">Favorites</a></li>
+            <li><a href="javascript:void(0)" (click)="goTo('/', $event)">Home</a></li>
+            <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
         </ul>
     </ng-container>
 

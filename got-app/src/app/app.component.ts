@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 
 
 import * as Actions from './store/characters.actions';
-import { Character } from '../models/character.model';
+import { Character } from './models/character.model';
 import { CharactersService } from './services/characters.service';
 
 @Component({

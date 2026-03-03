@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Character } from '../../models/character.model';
+import { Character } from '../models/character.model';
 
 export const loadCharacters = createAction('[Characters] Load Characters');
 
