@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="navbar-brand">
-        <a routerLink="/">
+        <a href="javascript:void(0)" (click)="goTo('/', $event)">
             <img src="assets/images/House-of-dragon.jpg" alt="Game of Thrones Logo">
         </a>
     </div>
@@ -22,5 +22,4 @@
             <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
         </ul>
     </ng-container>
-
 </nav>
