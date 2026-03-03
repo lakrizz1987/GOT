@@ -31,6 +31,6 @@ export class NavbarComponent implements OnInit {
   goTo(path: string, event: Event) {
     event.preventDefault();
     this.router.navigate([path]);
-    this.toggleMenu();
+    this.menuOpen = false;
   }
 }
