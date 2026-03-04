@@ -1,0 +1,23 @@
+@use '../../definitions.scss'as *;
+
+:host {
+    flex: 1;
+}
+
+.characters-wrapper {
+    width: 100%;
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(rgba($got-black, 0.3), rgba($got-black, 0.3)),
+        url('/assets/backgrounds/charackters-bg.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    @media (min-width: 768px) {
+
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+
+    }
+}

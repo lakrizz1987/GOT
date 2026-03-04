@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as Actions from './characters.actions';
-import { CharactersState, initialState } from './characters.state';
+import { initialState } from './characters.state';
 
 export const charactersReducer = createReducer(
     initialState,

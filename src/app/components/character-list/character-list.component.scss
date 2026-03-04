@@ -1,0 +1,60 @@
+@use '../../definitions.scss'as *;
+
+.card-wrapper {
+    width: 100%;
+    display: grid;
+    gap: 30px;
+    justify-items: center;
+    padding: 40px 0;
+
+    // mobile device
+    grid-template-columns: 1fr;
+
+    // tablet device
+    @media (min-width: $min-tablet-width) {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    // desktop device
+    // @media (min-width: $min-desktop-width) {
+    //     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    // }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+        
+        img {
+            width: 80%;
+            height: 380px;
+            max-width: 340px;
+            object-fit: contain top;
+            transition: transform 0.3s ease;
+            border: 12px solid transparent;
+            border-image-source: url('/assets/border/509.jpg');
+            border-image-slice: 200;
+            border-image-repeat: stretch;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            @media (min-width: $min-tablet-width) {
+                max-width: 300px;
+                height: 365px;
+            }
+        }
+
+        .name {
+            color: $got-white;
+            font-family: $got-font-family;
+            font-size: 22px;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 22px;
+        }
+    }
+}

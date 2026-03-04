@@ -29,3 +29,21 @@ export class CharactersService {
     return this.http.get<Character>(`${this.baseUrl}/characters/${id}`);
   }
 }
+
+export const CHARACTER_IMAGES: { [key: string]: string } = {
+  'Walder': '/assets/heroes/walder.webp',
+  'Balon Greyjoy': 'assets/heroes/balon-greyjoy.webp',
+  'Margaery Tyrell': '/assets/heroes/margaery-tyrell.webp',
+  'Mordane': '/assets/heroes/mordane.webp',
+  'Tywin Lannister': '/assets/heroes/tywin-lannister.webp',
+  'Aegon I': '/assets/heroes/aegon-1.webp',
+  'Aegon II': '/assets/heroes/aegon-2.webp',
+  'Aegon III': '/assets/heroes/aegon-3.webp',
+  'Aegon Targaryen': '/assets/heroes/aegon-targaryen.webp',
+  'Aegon V': '/assets/heroes/aegon-5.webp',
+  'Aenys Frey': '/assets/heroes/aenys-frey.webp',
+  'Aeron Greyjoy': '/assets/heroes/aeron-greyjoy.webp',
+  'Aerys II': '/assets/heroes/aerys-2.webp',
+  'Alannys Harlaw': '/assets/heroes/alannys-harlaw.webp',
+  'default' : '/assets/heroes/default.webp'
+};

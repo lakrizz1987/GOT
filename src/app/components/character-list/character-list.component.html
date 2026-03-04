@@ -1,1 +1,6 @@
-<p>character-list works!</p>
+<div class="card-wrapper">
+    <div class="hero" *ngFor="let hero of characters">
+        <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img">
+        <p class="name">{{hero.name}}</p>
+    </div>
+</div>

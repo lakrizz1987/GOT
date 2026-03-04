@@ -1,10 +1,8 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
@@ -13,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/nav/nav.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CharactersComponent } from './components/characters/characters.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
     CharacterDetailComponent,
     NavbarComponent,
     FavoritesComponent,
-    FooterComponent
+    FooterComponent,
+    CharactersComponent
   ],
   imports: [
     BrowserModule,
