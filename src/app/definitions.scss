@@ -1,8 +1,8 @@
 // Colors
 $got-black: #000000;
 $got-white: #ffffff;
-$got-gold-light: #f0e6d2;   // Основен цвят на линковете
-$got-gold-dark: #a7976e;    // Цвят при ховър
+$got-gold-light: #f0e6d2;
+$got-gold-dark: #a7976e;
 $got-gold-shadow: rgba(167, 151, 110, 0.6);
 
 // Fonts
@@ -11,3 +11,10 @@ $got-font-family: 'GoT', 'Times New Roman', Times, serif;
 // Sizes
 $navbar-height: 98px;
 $z-index-navbar: 1000;
+
+// screen sizes
+$min-mobile-width: 375px;
+$max-mobile-width: 767px;
+$min-desktop-width: 1366px;
+$min-tablet-width: ($max-mobile-width + 1px);
+$max-tablet-width: ($min-desktop-width - 1px);

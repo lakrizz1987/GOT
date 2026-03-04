@@ -1,4 +1,4 @@
-@use '../../definitions.scss' as *;
+@use '../../definitions.scss'as *;
 
 .got-footer {
     width: 100%;
@@ -21,7 +21,7 @@
         letter-spacing: 3px;
         opacity: 0.8;
 
-        @media (max-width: 768px) {
+        @media (max-width: $max-mobile-width) {
             font-size: 14px;
             letter-spacing: 2px;
         }
@@ -37,7 +37,7 @@
             text-decoration: none;
             transition: color 0.3s ease;
 
-            @media (max-width: 768px) {
+            @media (max-width: $max-mobile-width) {
                 font-size: 12px;
             }
 
@@ -55,7 +55,7 @@
         letter-spacing: 1px;
         margin-top: 10px;
 
-        @media (max-width: 768px) {
+        @media (max-width: $max-mobile-width) {
             font-size: 10px;
         }
     }

@@ -32,7 +32,7 @@
         img {
             width: 180px;
 
-            @media (max-width: 768px) {
+            @media (max-width: $max-mobile-width) {
                 width: 150px;
             }
         }
@@ -43,7 +43,7 @@
         gap: 24px;
         list-style: none;
 
-        @media (max-width: 768px) {
+        @media (max-width: $max-mobile-width) {
             width: 100%;
             height: calc(100vh - #{$navbar-height + 1px});
             flex-direction: column;
@@ -77,7 +77,7 @@
                 transform: rotate(360deg);
             }
 
-            @media (max-width: 768px) {
+            @media (max-width: $max-mobile-width) {
                 width: 80px;
             }
         }
