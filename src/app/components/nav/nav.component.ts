@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewportService } from '../../services/viewport.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,21 +7,13 @@ import { Router } from '@angular/router';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   menuOpen: boolean = false;
   isDesktop: boolean = false;
 
   constructor(
-    private viewportService: ViewportService,
     private router: Router
   ) { }
-
-  ngOnInit() {
-    this.viewportService.isDesktop$.subscribe(isDesktop => {
-      this.isDesktop = isDesktop;
-      this.menuOpen = false;
-    });
-  }
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;

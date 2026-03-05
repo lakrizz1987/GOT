@@ -5,14 +5,12 @@
         </a>
     </div>
 
-    <ng-container *ngIf="isDesktop">
-        <ul class="navbar-links">
-            <li><a href="javascript:void(0)" (click)="goTo('/', $event)">Characters</a></li>
-            <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
-        </ul>
-    </ng-container>
+    <ul class="navbar-links desktop-menu">
+        <li><a href="javascript:void(0)" (click)="goTo('/', $event)">Characters</a></li>
+        <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
+    </ul>
 
-    <ng-container *ngIf="!isDesktop">
+    <div class="mobile-menu">
         <button class="navbar-toggle" (click)="toggleMenu()">
             <img [ngClass]="{'rotate' : menuOpen}" src="assets/images/logo.png" alt="Menu Icon">
         </button>
@@ -21,5 +19,5 @@
             <li><a href="javascript:void(0)" (click)="goTo('/', $event)">Home</a></li>
             <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
         </ul>
-    </ng-container>
+    </div>
 </nav>

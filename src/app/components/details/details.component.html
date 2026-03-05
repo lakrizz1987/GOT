@@ -6,7 +6,7 @@
 
         <div class="info-container">
             <h1 class="character-name">{{ character.name || 'Unknown Identity' }}</h1>
-            
+
             <div class="data-group" *ngIf="character.titles.length">
                 <h3>Titles</h3>
                 <p>{{ character.titles | join }}</p>
@@ -30,6 +30,11 @@
             <div class="data-group" *ngIf="character.tvSeries.length">
                 <h3>TV Series</h3>
                 <p>{{ character.tvSeries | join }}</p>
+            </div>
+
+            <div class="favorite-action" [class.active]="true">
+                <span class="heart-icon">&hearts;</span>
+                <span class="text">{{ true ? 'Add to favorite' : 'Remove from favorite' }}</span>
             </div>
         </div>
     </div>

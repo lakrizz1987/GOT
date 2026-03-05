@@ -115,3 +115,48 @@
         }
     }
 }
+
+.favorite-action {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    gap: 10px;
+    padding: 0px 20px;
+    margin-top: 20px;
+    background: $got-black;
+    border: 1px solid $got-gold-dark;
+    transition: all 0.3s ease;
+    user-select: none;
+    cursor: pointer;
+
+    .heart-icon {
+        font-size: 36px;
+        color: white;
+        filter: grayscale(100%);
+    }
+
+    .text {
+        font-family: $got-font-family;
+        color: $got-white;
+        letter-spacing: 1px;
+        font-size: 14px;
+    }
+
+    &:hover {
+        background: rgba($got-gold-dark, 0.5);
+        transform: scale(1.05);
+
+        .heart-icon {
+            filter: grayscale(0%) brightness(1.2);
+        }
+    }
+
+    &.active {
+        .heart-icon {
+            filter: grayscale(0%);
+            color: red;
+        }
+    }
+}

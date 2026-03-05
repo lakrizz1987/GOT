@@ -1,4 +1,4 @@
-@use '../../definitions.scss' as *;
+@use '../../definitions.scss'as *;
 
 .navbar {
     width: 100%;
@@ -58,6 +58,20 @@
             &.active {
                 left: 0;
             }
+        }
+
+        &.desktop-menu {
+            @media (max-width: $max-mobile-width) {
+                display: none;
+            }
+        }
+    }
+
+    .mobile-menu {
+        display: none;
+
+        @media(max-width: $max-mobile-width) {
+            display: block;
         }
     }
 
