@@ -1,6 +1,19 @@
-<div class="card-wrapper">
-    <div class="hero" *ngFor="let hero of characters">
+<div class="search-container">
+    <input 
+        type="text"
+        maxlength="50"
+        spellcheck="false"
+        placeholder="Search for a hero..." 
+        (input)="onSearch($event)"
+        class="got-input"
+    >
+</div>
+<div class="card-wrapper" *ngIf="filteredCharacters.length > 0">
+    <div class="hero" *ngFor="let hero of filteredCharacters">
         <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img">
         <p class="name">{{hero.name}}</p>
     </div>
+</div>
+<div class="no-cards-wrapper" *ngIf="filteredCharacters.length === 0">
+    <h3>NO HEROES FOUND...</h3>
 </div>

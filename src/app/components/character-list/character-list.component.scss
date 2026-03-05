@@ -1,5 +1,42 @@
 @use '../../definitions.scss'as *;
 
+.search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.got-input {
+    width: 80%;
+    max-width: 500px;
+    padding: 12px 20px;
+    background: $got-black;
+    color: $got-white;
+    font-family: $got-font-family;
+    font-size: 18px;
+    outline: none;
+    text-align: center;
+    letter-spacing: 2px;
+    
+    border: 6px solid transparent;
+    border-image-source: url('/assets/border/509.jpg');
+    border-image-slice: 100;
+    border-image-repeat: stretch;
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+    &::placeholder {
+        color: rgba($got-white, 0.5);
+        font-size: 14px;
+    }
+
+    &:focus {
+        transform: scale(1.02);
+    }
+}
+
 .card-wrapper {
     width: 100%;
     display: grid;
@@ -56,5 +93,20 @@
             text-align: center;
             margin-top: 22px;
         }
+    }
+}
+
+.no-cards-wrapper {
+    width: 100%;
+
+    h3 {
+        font-family: $got-font-family;
+        font-size: 36px;
+        color: $got-white;
+        text-align: center;
+        letter-spacing: 5px;
+        line-height: 1.8;
+        margin-top: 40px;
+
     }
 }
