@@ -1,0 +1,36 @@
+<section class="details-wrapper" *ngIf="character">
+    <div class="content-card">
+        <div class="image-container">
+            <img [src]="characterImageMap[character.name] || characterImageMap['default']" alt="character-img">
+        </div>
+
+        <div class="info-container">
+            <h1 class="character-name">{{ character.name || 'Unknown Identity' }}</h1>
+            
+            <div class="data-group" *ngIf="character.titles.length">
+                <h3>Titles</h3>
+                <p>{{ character.titles | join }}</p>
+            </div>
+
+            <div class="data-group" *ngIf="bookNames.length">
+                <h3>Appears in</h3>
+                <p>{{ bookNames | join }}</p>
+            </div>
+
+            <div class="data-group" *ngIf="character.aliases.length">
+                <h3>Aliases</h3>
+                <p>{{ character.aliases | join }}</p>
+            </div>
+
+            <div class="data-group" *ngIf="character.playedBy.length">
+                <h3>Played By</h3>
+                <p>{{ character.playedBy | join }}</p>
+            </div>
+
+            <div class="data-group" *ngIf="character.tvSeries.length">
+                <h3>TV Series</h3>
+                <p>{{ character.tvSeries | join }}</p>
+            </div>
+        </div>
+    </div>
+</section>

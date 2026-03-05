@@ -9,7 +9,7 @@
     >
 </div>
 <div class="card-wrapper" *ngIf="filteredCharacters.length > 0">
-    <div class="hero" *ngFor="let hero of filteredCharacters">
+    <div class="hero" *ngFor="let hero of filteredCharacters" (click)="goToHeroDetails(hero.url)">
         <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img">
         <p class="name">{{hero.name}}</p>
     </div>

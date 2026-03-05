@@ -12,6 +12,8 @@ import { NavbarComponent } from './components/nav/nav.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CharactersComponent } from './components/characters/characters.component';
+import { DetailsComponent } from './components/details/details.component';
+import { JoinPipe } from './pipes/join.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { CharactersComponent } from './components/characters/characters.componen
     NavbarComponent,
     FavoritesComponent,
     FooterComponent,
-    CharactersComponent
+    CharactersComponent,
+    DetailsComponent,
+    JoinPipe
   ],
   imports: [
     BrowserModule,
@@ -33,4 +37,5 @@ import { CharactersComponent } from './components/characters/characters.componen
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

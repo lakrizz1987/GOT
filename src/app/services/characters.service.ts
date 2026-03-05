@@ -28,6 +28,10 @@ export class CharactersService {
   getCharacterById(id: string): Observable<Character> {
     return this.http.get<Character>(`${this.baseUrl}/characters/${id}`);
   }
+
+  getCharacterBooks(bookUrl: string) {
+    return this.http.get<any>(bookUrl);
+  }
 }
 
 export const CHARACTER_IMAGES: { [key: string]: string } = {
@@ -45,5 +49,5 @@ export const CHARACTER_IMAGES: { [key: string]: string } = {
   'Aeron Greyjoy': '/assets/heroes/aeron-greyjoy.webp',
   'Aerys II': '/assets/heroes/aerys-2.webp',
   'Alannys Harlaw': '/assets/heroes/alannys-harlaw.webp',
-  'default' : '/assets/heroes/default.webp'
+  'default': '/assets/heroes/default.webp'
 };

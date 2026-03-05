@@ -8,7 +8,7 @@ export class ViewportService {
   private isDesktopSubject = new BehaviorSubject<boolean>(false);
   public isDesktop$: Observable<boolean> = this.isDesktopSubject.asObservable();
 
-  private desktopWidth = 768;
+  private minTabletWidth = 768;
   private targetId = 'measure-container';
 
   constructor() {
@@ -21,6 +21,6 @@ export class ViewportService {
     if (!div) return;
 
     const width = div.offsetWidth;
-    this.isDesktopSubject.next(width >= this.desktopWidth);
+    this.isDesktopSubject.next(width >= this.minTabletWidth);
   }
 }

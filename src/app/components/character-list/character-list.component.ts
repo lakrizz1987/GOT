@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Character } from '../../models/character.model';
 import { CHARACTER_IMAGES } from '../../services/characters.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-character-list',
@@ -17,6 +18,10 @@ export class CharacterListComponent {
   filteredCharacters: Character[] = [];
   characterImageMap = CHARACTER_IMAGES;
 
+  constructor(
+    private router: Router
+  ) { }
+
   onSearch(event: Event) {
     const value = (event.target as HTMLFormElement)['value'].trim().toLowerCase();
 
@@ -28,5 +33,15 @@ export class CharacterListComponent {
     this.filteredCharacters = this.allCharacters.filter(character =>
       character.name.toLowerCase().includes(value)
     );
+  }
+
+  goToHeroDetails(url: string) {
+    const id = this.extractHeroId(url);
+    this.router.navigate(['/details/' + id]);
+  }
+
+  extractHeroId(url: string) {
+    const id = url.split('/').pop();
+    return id;
   }
 }
