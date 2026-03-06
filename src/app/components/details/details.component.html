@@ -32,9 +32,9 @@
                 <p>{{ character.tvSeries | join }}</p>
             </div>
 
-            <div class="favorite-action" [class.active]="true">
+            <div class="favorite-action" [class.active]="isFavorite" (click)="isFavorite ? removeFromFavorites(character) : addToFavorite(character)">
                 <span class="heart-icon">&hearts;</span>
-                <span class="text">{{ true ? 'Add to favorite' : 'Remove from favorite' }}</span>
+                <span class="text">{{ isFavorite ? 'Remove from favorite' : 'Add to favorite' }}</span>
             </div>
         </div>
     </div>

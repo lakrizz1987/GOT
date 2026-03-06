@@ -31,7 +31,7 @@ import { JoinPipe } from './pipes/join.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ characters: charactersReducer }),
+    StoreModule.forRoot({ charactersStore: charactersReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],

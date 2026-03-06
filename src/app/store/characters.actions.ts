@@ -7,18 +7,15 @@ export const loadCharactersSuccess = createAction(
     '[Characters] Load Characters Success',
     props<{ characters: Character[] }>()
 );
-
-export const loadCharacterById = createAction(
-    '[Characters] Load Character By Id',
-    props<{ id: string }>()
-);
-
-export const loadCharacterByIdSuccess = createAction(
-    '[Characters] Load Character By Id Success',
+export const addToFavorite = createAction(
+    '[Characters] Add to Favorite',
     props<{ character: Character }>()
 );
-
-export const loadFailure = createAction(
-    '[Characters] Load Failure',
-    props<{ error: any }>()
+export const removeFromFavorite = createAction(
+    '[Characters] Remove from Favorite',
+    props<{ character: Character }>()
 );
+export const loadFavorites = createAction(
+    '[Characters] Load Favorite',
+);
+

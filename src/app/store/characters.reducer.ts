@@ -10,14 +10,24 @@ export const charactersReducer = createReducer(
         characters
     })),
 
-    on(Actions.loadCharacterByIdSuccess, (state, { character }) => ({
+    on(Actions.loadFavorites, (state) => ({
         ...state,
-        selectedCharacter: character
     })),
 
-    on(Actions.loadFailure, (state, { error }) => ({
+    on(Actions.addToFavorite, (state, { character }) => {
+        const exists = state.favoritesCharacters.some(ch => ch.name === character.name);
+        if (exists) {
+            return state;
+        }
+
+        return {
+            ...state,
+            favoritesCharacters: [...state.favoritesCharacters, character]
+        };
+    }),
+
+    on(Actions.removeFromFavorite, (state, { character }) => ({
         ...state,
-        characters: [],
-        selectedCharacter: null
+        favoritesCharacters: state.favoritesCharacters.filter(ch => ch.name !== character.name)
     }))
 );

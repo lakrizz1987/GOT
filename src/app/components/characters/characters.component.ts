@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CharactersService } from '../../services/characters.service';
 import { Character } from '../../models/character.model';
 import * as Actions from '../../store/characters.actions';
+import { Subscription } from 'rxjs';
+import { CharactersState } from '../../store/characters.state';
 
 @Component({
   selector: 'app-characters',
@@ -10,30 +12,34 @@ import * as Actions from '../../store/characters.actions';
   templateUrl: './characters.component.html',
   styleUrl: './characters.component.scss'
 })
-export class CharactersComponent implements OnInit{
-
+export class CharactersComponent implements OnInit, OnDestroy {
   characters: Character[] = [];
+  subscriptions: Subscription[] = [];
   constructor(
-    private store: Store<{ characters: any }>,
-    private service: CharactersService
+    private readonly store: Store<{ charactersStore: CharactersState }>,
+    private readonly service: CharactersService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadCharacters();
-    this.store.select(state => state.characters.characters).subscribe(data => {
-      console.log(data);
-      this.characters = data;
+    const sub = this.store.select(state => state.charactersStore.characters).subscribe(characters => {
+      console.log(characters);
+      this.characters = characters;
     });
+    this.subscriptions.push(sub);
   }
 
-  loadCharacters(): void {
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  loadCharacters() {
     this.service.getCharactersByBook(1).subscribe({
       next: (data: Character[]) => {
         this.store.dispatch(Actions.loadCharactersSuccess({ characters: data }));
       },
       error: (err) => {
-        this.store.dispatch(Actions.loadFailure({ error: err }));
-
+        console.error(err);
       }
     });
   }

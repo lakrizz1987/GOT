@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CHARACTER_IMAGES, CharactersService } from '../../services/characters.service';
 import { Character } from '../../models/character.model';
 import { ActivatedRoute } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { combineLatest, forkJoin, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as Actions from '../../store/characters.actions';
+import { CharactersState } from '../../store/characters.state';
 
 @Component({
   selector: 'app-details',
@@ -10,30 +13,53 @@ import { forkJoin } from 'rxjs';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent implements OnInit {
-
+export class DetailsComponent implements OnInit, OnDestroy {
+  characterImageMap = CHARACTER_IMAGES;
   character: Character | null = null;
   characterId: string = '';
-  characterImageMap = CHARACTER_IMAGES;
   bookNames: string[] = [];
+  isFavorite: boolean = false;
+  subscriptions: Subscription[] = [];
 
   constructor(
-    private characterService: CharactersService,
-    private route: ActivatedRoute
+    private readonly characterService: CharactersService,
+    private readonly route: ActivatedRoute,
+    private readonly store: Store<{ charactersStore: CharactersState }>
   ) { }
 
   ngOnInit() {
-    this.characterId = this.route.snapshot.paramMap.get('id') || '';
-    this.characterService.getCharacterById(this.characterId).subscribe(hero => {
-      this.character = hero;
+    this.characterId = this.route.snapshot.paramMap.get('id') ?? '';
+    if (this.characterId) {
+      this.setCharacterData();
+    }
+  }
 
-      if (hero.books && hero.books.length > 0) {
-        const bookRequests = hero.books.map(bookUrl => this.characterService.getCharacterBooks(bookUrl));
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
 
-        forkJoin(bookRequests).subscribe(books => {
-          this.bookNames = books.map(b => b.name);
-        });
+  private setCharacterData() {
+    const character$ = this.characterService.getCharacterById(this.characterId);
+    const favorites$ = this.store.select(state => state.charactersStore.favoritesCharacters);
+    const sub = combineLatest([character$, favorites$]).subscribe(([character, favorites]) => {
+      this.character = character;
+      this.isFavorite = favorites.some(fav => fav.name === this.character?.name);
+
+      if (this.bookNames.length === 0 && character.books?.length > 0) {
+        const bookRequests = character.books.map(url => this.characterService.getCharacterBooks(url));
+        forkJoin(bookRequests).subscribe(books => this.bookNames = books.map(b => b.name));
       }
     });
+    this.subscriptions.push(sub);
+  }
+
+  addToFavorite(character: Character) {
+    this.store.dispatch(Actions.addToFavorite({ character }));
+    this.isFavorite = true;
+  }
+
+  removeFromFavorites(character: Character) {
+    this.store.dispatch(Actions.removeFromFavorite({ character }));
+    this.isFavorite = false;
   }
 }
