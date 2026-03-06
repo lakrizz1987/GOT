@@ -18,12 +18,10 @@
     outline: none;
     text-align: center;
     letter-spacing: 2px;
-    
     border: 6px solid transparent;
     border-image-source: url('/assets/border/509.jpg');
     border-image-slice: 100;
     border-image-repeat: stretch;
-    
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 
@@ -63,17 +61,22 @@
         align-items: center;
         cursor: pointer;
         width: 100%;
-        
+
         img {
             width: 80%;
             height: 380px;
             max-width: 340px;
             object-fit: contain top;
-            transition: transform 0.3s ease;
+            opacity: 0;
+            transition: all 0.3s ease;
             border: 12px solid transparent;
             border-image-source: url('/assets/border/509.jpg');
             border-image-slice: 200;
             border-image-repeat: stretch;
+
+            &.loaded {
+                opacity: 1;
+            }
 
             &:hover {
                 transform: scale(1.05);

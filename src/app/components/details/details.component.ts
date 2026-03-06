@@ -6,6 +6,7 @@ import { combineLatest, forkJoin, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as Actions from '../../store/characters.actions';
 import { CharactersState } from '../../store/characters.state';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -24,6 +25,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(
     private readonly characterService: CharactersService,
     private readonly route: ActivatedRoute,
+    private readonly location: Location,
     private readonly store: Store<{ charactersStore: CharactersState }>
   ) { }
 
@@ -61,5 +63,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
   removeFromFavorites(character: Character) {
     this.store.dispatch(Actions.removeFromFavorite({ character }));
     this.isFavorite = false;
+  }
+
+  goBack() {
+    this.location.back()
   }
 }

@@ -17,10 +17,15 @@ export class CharacterListComponent {
   allCharacters: Character[] = [];
   filteredCharacters: Character[] = [];
   characterImageMap = CHARACTER_IMAGES;
+  imgLoaded: boolean = false;
 
   constructor(
     private router: Router
   ) { }
+
+  trackByFn(index: number, character: Character) {
+    return character.url;
+  }
 
   onSearch(event: Event) {
     const value = (event.target as HTMLFormElement)['value'].trim().toLowerCase();
