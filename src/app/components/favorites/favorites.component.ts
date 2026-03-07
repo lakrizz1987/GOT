@@ -14,9 +14,11 @@ import { Subscription } from 'rxjs';
 export class FavoritesComponent implements OnInit, OnDestroy {
   favoriteCharacters: Character[] = [];
   subscriptions: Subscription[] = []
+
   constructor(
     private readonly store: Store<{ charactersStore: CharactersState }>
   ) { }
+
   ngOnInit() {
     this.store.dispatch(Actions.loadFavorites());
     const sub = this.store.select(state => state.charactersStore.favoritesCharacters).subscribe(favorites => {
