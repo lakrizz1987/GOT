@@ -1,5 +1,6 @@
 export enum Paths {
-    Characters = 'characters',
-    Favorites = 'favorites',
-    Details = 'details',
+    CHARACTERS = 'characters',
+    FAVORITES = 'favorites',
+    DETAILS = 'details',
+    INTERNAL_ERROR = 'iternalError'
 }

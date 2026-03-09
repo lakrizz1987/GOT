@@ -51,7 +51,10 @@ body {
     flex-direction: column;
 }
 
-app-characters, app-details {
+app-characters,
+app-details,
+app-internal-error,
+app-favorites {
     display: flex;
     flex: 1;
 }

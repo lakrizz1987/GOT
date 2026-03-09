@@ -43,7 +43,7 @@ export class CharacterListComponent {
 
   goToHeroDetails(url: string) {
     const id = this.extractHeroId(url);
-    this.router.navigate(['/', Paths.Details, id]);
+    this.router.navigate(['/', Paths.DETAILS, id]);
   }
 
   extractHeroId(url: string) {

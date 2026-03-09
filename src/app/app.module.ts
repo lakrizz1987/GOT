@@ -15,6 +15,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { JoinPipe } from './pipes/join.pipe';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { httpLoaderInterceptor } from './interceptors/http-loader.interceptor';
+import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { httpLoaderInterceptor } from './interceptors/http-loader.interceptor';
     CharactersComponent,
     DetailsComponent,
     JoinPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    InternalErrorComponent
   ],
   imports: [
     BrowserModule,

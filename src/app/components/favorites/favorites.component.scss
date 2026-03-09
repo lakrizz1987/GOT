@@ -1,0 +1,10 @@
+@use '../../definitions.scss'as *;
+
+.favorites-wrapper {
+    width: 100%;
+    background: linear-gradient(rgba($got-black, 0.3), rgba($got-black, 0.3)),
+        url('/assets/backgrounds/flags-black.jpg');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: space;
+}

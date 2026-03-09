@@ -1,0 +1,22 @@
+@use '../../definitions.scss'as *;
+
+.internal-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+        background: linear-gradient(rgba($got-black, 0.3), rgba($got-black, 0.3)),
+        url('/assets/backgrounds/stark.jpg');
+    background-size:  cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    h2 {
+        width: 70%;
+        font-family: $got-font-family;
+        color: $got-white;
+        line-height: 1.8;
+        text-align: center;
+    }
+}
