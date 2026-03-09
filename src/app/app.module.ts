@@ -17,6 +17,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { httpLoaderInterceptor } from './interceptors/http-loader.interceptor';
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthComponent } from './components/auth/auth.component';
     JoinPipe,
     SpinnerComponent,
     InternalErrorComponent,
-    AuthComponent
+    AuthComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

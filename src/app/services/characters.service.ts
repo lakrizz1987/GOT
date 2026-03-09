@@ -9,7 +9,7 @@ import { Character } from '../models/character.model';
 export class CharactersService {
   private baseUrl = 'https://anapioficeandfire.com/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getCharactersByBook(bookId: number, limit: number = 20): Observable<Character[]> {
     return this.http.get<{ characters: string[] }>(`https://anapioficeandfire.com/api/books/${bookId}`).pipe(

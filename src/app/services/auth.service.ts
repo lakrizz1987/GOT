@@ -14,6 +14,7 @@ export class AuthService {
   }
   saveToken(token: string) {
     localStorage.setItem(this.TOKEN_KEY, token);
+    this.isLoggedInSubject.next(true);
   }
 
   getToken(): string | null {
@@ -22,5 +23,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.TOKEN_KEY);
+    this.isLoggedInSubject.next(false);
   }
 }
