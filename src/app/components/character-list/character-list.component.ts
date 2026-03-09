@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Character } from '../../models/character.model';
 import { CHARACTER_IMAGES } from '../../services/characters.service';
 import { Router } from '@angular/router';
+import { Paths } from '../../enums/paths.enum';
 
 @Component({
   selector: 'app-character-list',
@@ -42,7 +43,7 @@ export class CharacterListComponent {
 
   goToHeroDetails(url: string) {
     const id = this.extractHeroId(url);
-    this.router.navigate(['/details/' + id]);
+    this.router.navigate(['/', Paths.Details, id]);
   }
 
   extractHeroId(url: string) {

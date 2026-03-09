@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Paths } from '../../enums/paths.enum';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,10 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   menuOpen: boolean = false;
   isDesktop: boolean = false;
+  paths = Paths;
 
   constructor(
-    private router: Router
+    private readonly router: Router
   ) { }
 
   toggleMenu() {

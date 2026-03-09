@@ -7,7 +7,7 @@
 
     <ul class="navbar-links desktop-menu">
         <li><a href="javascript:void(0)" (click)="goTo('/', $event)">Characters</a></li>
-        <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
+        <li><a href="javascript:void(0)" (click)="goTo(paths.Favorites , $event)">Favorites</a></li>
     </ul>
 
     <div class="mobile-menu">
@@ -17,7 +17,7 @@
 
         <ul [ngClass]="{'active' : menuOpen}" class="navbar-links">
             <li><a href="javascript:void(0)" (click)="goTo('/', $event)">Characters</a></li>
-            <li><a href="javascript:void(0)" (click)="goTo('/favorites', $event)">Favorites</a></li>
+            <li><a href="javascript:void(0)" (click)="goTo(paths.Favorites, $event)">Favorites</a></li>
         </ul>
     </div>
 </nav>
