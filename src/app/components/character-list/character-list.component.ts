@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, OnDestroy } from '@angular/core';
 import { Character } from '../../models/character.model';
 import { CHARACTER_IMAGES } from '../../services/characters.service';
 import { Router } from '@angular/router';
 import { Paths } from '../../enums/paths.enum';
 import { SpinnerService } from '../../services/spinner.service';
+import { debounceTime, distinctUntilChanged, fromEvent, map, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-character-list',
@@ -11,35 +12,54 @@ import { SpinnerService } from '../../services/spinner.service';
   templateUrl: './character-list.component.html',
   styleUrl: './character-list.component.scss'
 })
-export class CharacterListComponent {
+export class CharacterListComponent implements AfterViewInit, OnDestroy {
   @Input() set characters(data: Character[]) {
     this.allCharacters = data;
     this.filteredCharacters = data;
   }
+  @ViewChild('inputElement', { static: true }) inputElement: ElementRef<HTMLInputElement> | undefined;
   allCharacters: Character[] = [];
   filteredCharacters: Character[] = [];
   characterImageMap = CHARACTER_IMAGES;
   imgLoaded: boolean = false;
+  private searchSubscription: Subscription | null = null;
 
   constructor(
-    private router: Router,
+    private readonly router: Router,
     public spinnerService: SpinnerService
   ) { }
-
-  trackByFn(index: number, character: Character) {
-    return character.url;
+  ngAfterViewInit() {
+    setTimeout(() => {
+      if (!this.inputElement) {
+        return;
+      }
+      
+      this.searchSubscription = fromEvent(this.inputElement.nativeElement, 'input')
+        .pipe(
+          map(event => (event.target as HTMLInputElement).value),
+          debounceTime(500),
+          distinctUntilChanged()
+        )
+        .subscribe(value => {
+          this.filterCharacters(value);
+        });
+    }, 500);
   }
 
-  onSearch(event: Event) {
-    const value = (event.target as HTMLFormElement)['value'].trim().toLowerCase();
+  ngOnDestroy() {
+    this.searchSubscription?.unsubscribe();
+  }
 
-    if (!value) {
+  filterCharacters(value: string) {
+    const searchText = value.trim().toLowerCase();
+
+    if (!searchText) {
       this.filteredCharacters = this.allCharacters;
       return;
     }
 
     this.filteredCharacters = this.allCharacters.filter(character =>
-      character.name.toLowerCase().includes(value)
+      character.name.toLowerCase().includes(searchText)
     );
   }
 

@@ -1,8 +1,14 @@
-<div class="search-container" *ngIf="(spinnerService.isVisible$ | async) === false">
-    <input type="text" maxlength="50" spellcheck="false" placeholder="Search for a hero..." (input)="onSearch($event)" class="got-input">
+<div class="search-container">
+    <input #inputElement
+        class="got-input" 
+        type="text" 0
+        maxlength="50" 
+        spellcheck="false" 
+        placeholder="Search for a hero..." 
+    >
 </div>
 <div class="card-wrapper" *ngIf="filteredCharacters.length > 0">
-    <div class="hero" *ngFor="let hero of filteredCharacters; let i = index;  trackBy: trackByFn"
+    <div class="hero" *ngFor="let hero of filteredCharacters; let i = index;"
         (click)="goToHeroDetails(hero.url)">
         <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img"
             (load)="imgLoaded = true" [class.loaded]="imgLoaded">
