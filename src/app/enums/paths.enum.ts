@@ -4,5 +4,6 @@ export enum Paths {
     DETAILS = 'details',
     LOGIN = 'login',
     REGISTER = 'register',
+    LOGOUT = 'logout',
     INTERNAL_ERROR = 'iternalError'
 }

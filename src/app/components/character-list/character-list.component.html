@@ -1,6 +1,5 @@
 <div class="search-container" *ngIf="(spinnerService.isVisible$ | async) === false">
-    <input type="text" maxlength="50" spellcheck="false" placeholder="Search for a hero..." (input)="onSearch($event)"
-        class="got-input">
+    <input type="text" maxlength="50" spellcheck="false" placeholder="Search for a hero..." (input)="onSearch($event)" class="got-input">
 </div>
 <div class="card-wrapper" *ngIf="filteredCharacters.length > 0">
     <div class="hero" *ngFor="let hero of filteredCharacters; let i = index;  trackBy: trackByFn"
