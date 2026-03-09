@@ -1,0 +1,85 @@
+@use '../../definitions.scss'as *;
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    .form {
+        width: 100%;
+        max-width: 450px;
+        border: 2px solid $got-gold-dark;
+        padding: 30px;
+
+        .title {
+            margin-bottom: 30px;
+            font-family: $got-font-family;
+            color: $got-gold-light;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+
+            .form-label {
+                display: block;
+                color: $got-white;
+                font-family: $got-font-family;
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .form-input {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid $got-gold-dark;
+                background: transparent;
+                color: $got-white;
+
+                &:focus {
+                    border-color: $got-gold-light;
+                    outline: none;
+                }
+            }
+        }
+
+
+        .buttons-container {
+            margin-top: 30px;
+
+            button {
+                width: 100%;
+                background: $got-black;
+                border: 1px solid $got-gold-dark;
+                padding: 15px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                .text {
+                    font-family: $got-font-family;
+                    color: $got-white;
+                }
+
+                &:hover {
+                    background: $got-gold-dark;
+                }
+            }
+        }
+
+        .form-link {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            color: $got-white;
+            font-size: 13px;
+            font-style: italic;
+
+            &:hover {
+                color: $got-gold-dark;
+            }
+        }
+    }
+}

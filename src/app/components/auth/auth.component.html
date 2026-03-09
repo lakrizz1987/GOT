@@ -1,0 +1,31 @@
+<div class="login-container">
+    <form class="form">
+        <h2 class="title">{{ isLoginFlow ? 'Log In' : 'Register' }}</h2>
+
+        <div class="form-group">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-input" id="username" name="username" required>
+            <div class="invalid-feedback">Please enter your name.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-input" id="password" name="password" required>
+            <div class="invalid-feedback">Enter your password.</div>
+        </div>
+
+        <div *ngIf="!isLoginFlow" class="form-group">
+            <label for="password" class="form-label">Repeat Password</label>
+            <input type="password" class="form-input" id="password" name="password" required>
+            <div class="invalid-feedback">Enter your password.</div>
+        </div>
+
+        <div class="buttons-container">
+            <button type="submit">
+                <span class="text">Claim your Throne</span>
+            </button>
+        </div>
+
+        <a *ngIf="isLoginFlow" routerLink="/register" class="form-link">Don't have an account? Register here.</a>
+    </form>
+</div>

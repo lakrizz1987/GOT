@@ -5,11 +5,11 @@
 <div class="card-wrapper" *ngIf="filteredCharacters.length > 0">
     <div class="hero" *ngFor="let hero of filteredCharacters; let i = index;  trackBy: trackByFn"
         (click)="goToHeroDetails(hero.url)">
-        <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img"   (load)="imgLoaded = true"
-  [class.loaded]="imgLoaded">
+        <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img"
+            (load)="imgLoaded = true" [class.loaded]="imgLoaded">
         <p class="name">{{hero.name}}</p>
     </div>
 </div>
-<div class="no-cards-wrapper" *ngIf="filteredCharacters.length === 0">
+<div class="no-cards-wrapper" *ngIf="filteredCharacters.length === 0 && isInitialLoading === false">
     <h3>NO HEROES FOUND...</h3>
 </div>

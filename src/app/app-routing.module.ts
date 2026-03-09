@@ -5,12 +5,15 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { DetailsComponent } from './components/details/details.component';
 import { Paths } from './enums/paths.enum'
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 const routes: Routes = [
   { path: '', redirectTo: Paths.CHARACTERS, pathMatch: 'full' },
   { path: Paths.CHARACTERS, component: CharactersComponent },
   { path: Paths.FAVORITES, component: FavoritesComponent },
   { path: `${Paths.DETAILS}/:id`, component: DetailsComponent },
+  { path: Paths.LOGIN, component: AuthComponent },
+  { path: Paths.REGISTER, component: AuthComponent },
   { path: Paths.INTERNAL_ERROR, component: InternalErrorComponent },
   { path: '**', redirectTo: Paths.INTERNAL_ERROR, pathMatch: 'full' }
 ];
