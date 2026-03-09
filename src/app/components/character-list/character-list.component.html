@@ -1,4 +1,4 @@
-<div class="search-container">
+<div class="search-container" *ngIf="(spinnerService.isVisible$ | async) === false">
     <input type="text" maxlength="50" spellcheck="false" placeholder="Search for a hero..." (input)="onSearch($event)"
         class="got-input">
 </div>
@@ -10,6 +10,6 @@
         <p class="name">{{hero.name}}</p>
     </div>
 </div>
-<div class="no-cards-wrapper" *ngIf="filteredCharacters.length === 0 && isInitialLoading === false">
+<div class="no-cards-wrapper" *ngIf="filteredCharacters.length === 0 && (spinnerService.isVisible$ | async) === false">
     <h3>NO HEROES FOUND...</h3>
 </div>

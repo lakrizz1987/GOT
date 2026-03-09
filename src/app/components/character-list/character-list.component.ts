@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Character } from '../../models/character.model';
 import { CHARACTER_IMAGES } from '../../services/characters.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { SpinnerService } from '../../services/spinner.service';
   templateUrl: './character-list.component.html',
   styleUrl: './character-list.component.scss'
 })
-export class CharacterListComponent implements AfterViewInit {
+export class CharacterListComponent {
   @Input() set characters(data: Character[]) {
     this.allCharacters = data;
     this.filteredCharacters = data;
@@ -20,18 +20,11 @@ export class CharacterListComponent implements AfterViewInit {
   filteredCharacters: Character[] = [];
   characterImageMap = CHARACTER_IMAGES;
   imgLoaded: boolean = false;
-  isInitialLoading = true;
 
   constructor(
-    private readonly router: Router,
-    public readonly spinnerService: SpinnerService
+    private router: Router,
+    public spinnerService: SpinnerService
   ) { }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.isInitialLoading = false;
-    }, 200);
-  }
 
   trackByFn(index: number, character: Character) {
     return character.url;
