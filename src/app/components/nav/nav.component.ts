@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paths } from '../../enums/paths.enum';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,8 @@ export class NavbarComponent {
   paths = Paths;
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    public readonly authService: AuthService
   ) { }
 
   toggleMenu() {

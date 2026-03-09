@@ -22,8 +22,8 @@
 
 <ng-template #linkList>
     <li><a href="javascript:void(0)" (click)="goTo(paths.CHARACTERS, $event)">Characters</a></li>
-    <li><a href="javascript:void(0)" (click)="goTo(paths.FAVORITES, $event)">Favorites</a></li>
-    <li><a href="javascript:void(0)" (click)="goTo(paths.LOGIN , $event)">Log in</a></li>
-    <li><a href="javascript:void(0)" (click)="goTo(paths.REGISTER , $event)">Register</a></li>
-    <li><a href="javascript:void(0)" (click)="goTo(paths.LOGOUT , $event)">Logout</a></li>
+    <li *ngIf="(authService.isLoggedIn$ | async)" ><a href="javascript:void(0)" (click)="goTo(paths.FAVORITES, $event)">Favorites</a></li>
+    <li *ngIf="!(authService.isLoggedIn$ | async)"><a href="javascript:void(0)" (click)="goTo(paths.LOGIN , $event)">Log in</a></li>
+    <li *ngIf="!(authService.isLoggedIn$ | async)"><a href="javascript:void(0)" (click)="goTo(paths.REGISTER , $event)">Register</a></li>
+    <li *ngIf="(authService.isLoggedIn$ | async)"><a href="javascript:void(0)" (click)="goTo(paths.LOGOUT , $event)">Logout</a></li>
 </ng-template>
