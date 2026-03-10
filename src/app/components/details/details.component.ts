@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import * as Actions from '../../store/characters.actions';
 import { CharactersState } from '../../store/characters.state';
 import { Location } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-details',
@@ -26,7 +27,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
     private readonly characterService: CharactersService,
     private readonly route: ActivatedRoute,
     private readonly location: Location,
-    private readonly store: Store<{ charactersStore: CharactersState }>
+    private readonly store: Store<{ charactersStore: CharactersState }>,
+    public readonly authService: AuthService
   ) { }
 
   ngOnInit() {
