@@ -65,6 +65,7 @@
             border-image-source: url('/assets/border/509.jpg');
             border-image-slice: 200;
             border-image-repeat: stretch;
+            box-shadow: rgba(0, 0, 0, 0.5) 20px 3px 8px;
 
             &.loaded {
                 opacity: 1;

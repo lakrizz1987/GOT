@@ -7,9 +7,10 @@ import { Paths } from './enums/paths.enum'
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: Paths.CHARACTERS, pathMatch: 'full' },
+  { path: '', component: LandingPageComponent, pathMatch: 'full' },
   { path: Paths.CHARACTERS, component: CharactersComponent },
   { path: Paths.FAVORITES, component: FavoritesComponent },
   { path: `${Paths.DETAILS}/:id`, component: DetailsComponent },

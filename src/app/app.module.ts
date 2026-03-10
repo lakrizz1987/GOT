@@ -18,6 +18,7 @@ import { httpLoaderInterceptor } from './interceptors/http-loader.interceptor';
 import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     SpinnerComponent,
     InternalErrorComponent,
     AuthComponent,
-    LogoutComponent
+    LogoutComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
