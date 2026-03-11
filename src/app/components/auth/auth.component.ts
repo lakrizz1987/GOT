@@ -42,7 +42,7 @@ export class AuthComponent implements OnInit {
     if (this.password === this.repeatPassword) {
       this.authService.register(this.username, this.password).subscribe({
         next: () => {
-          this.router.navigate([this.paths.CHARACTERS]);
+          this.router.navigate([this.paths.LOGIN]);
         },
         error: (err: any) => {
           debugger
