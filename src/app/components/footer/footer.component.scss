@@ -12,18 +12,17 @@
     .footer-content {
         display: flex;
         flex-direction: column;
-        gap: 15px;
         align-items: center;
+        gap: 15px;
     }
 
     .house-motto {
-        font: italic 18px $got-font-family;
-        letter-spacing: 3px;
-        opacity: 0.8;
+        font: italic 14px $got-font-family;
+        letter-spacing: 2px;
 
-        @media (max-width: $max-mobile-width) {
-            font-size: 14px;
-            letter-spacing: 2px;
+        @media (min-width: $min-tablet-width) {
+            font-size: 18px;
+            letter-spacing: 3px;
         }
     }
 
@@ -33,30 +32,29 @@
 
         a {
             color: $got-white;
-            font: normal 14px $got-font-family;
+            font: normal 12px $got-font-family;
             text-decoration: none;
             transition: color 0.3s ease;
 
-            @media (max-width: $max-mobile-width) {
-                font-size: 12px;
+            @media (min-width: $min-tablet-width) {
+                font-size: 14px;
             }
 
             &:hover {
                 color: $got-gold-dark;
-                text-shadow: 0 0 5px $got-gold-shadow;
             }
         }
     }
 
     .copyright {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 12px;
-        opacity: 0.5;
-        letter-spacing: 1px;
         margin-top: 10px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 10px;
+        letter-spacing: 1px;
+        opacity: 0.5;
 
-        @media (max-width: $max-mobile-width) {
-            font-size: 10px;
+        @media (min-width: $min-tablet-width) {
+            font-size: 12px;
         }
     }
 }
