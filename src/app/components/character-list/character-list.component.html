@@ -11,7 +11,7 @@
     <div class="hero" *ngFor="let hero of filteredCharacters; let i = index;"
         (click)="goToHeroDetails(hero.url)">
         <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img"
-            (load)="imgLoaded = true" [class.loaded]="imgLoaded">
+            (load)="imgLoaded = true" [class.loaded]="imgLoaded" loading="lazy">
         <p class="name">{{hero.name}}</p>
     </div>
 </div>

@@ -21,10 +21,15 @@ export class CharactersComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.loadCharacters();
-    const sub = this.store.select((state: { charactersStore: CharactersState }) => state.charactersStore.characters).subscribe(characters => {
-      this.characters = characters;
-    });
+    const sub = this.store.select(state => state.charactersStore.characters)
+      .subscribe(characters => {
+        this.characters = characters;
+
+        if (characters.length === 0) {
+          this.loadCharacters();
+        }
+      });
+
     this.subscriptions.push(sub);
   }
 
