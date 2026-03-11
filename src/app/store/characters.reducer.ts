@@ -29,5 +29,11 @@ export const charactersReducer = createReducer(
     on(Actions.removeFromFavorite, (state, { character }) => ({
         ...state,
         favoritesCharacters: state.favoritesCharacters.filter(ch => ch.name !== character.name)
+    })),
+    
+    on(Actions.deleteCollection, (state) => ({
+        ...state,
+        characters: [],
+        favoritesCharacters: []
     }))
 );

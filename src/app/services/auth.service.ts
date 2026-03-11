@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Paths } from '../enums/paths.enum';
+import { Store } from '@ngrx/store';
+import { CharactersState } from '../store/characters.state';
+import * as Actions from '../store/characters.actions';
 
 
 @Injectable({
@@ -16,7 +19,8 @@ export class AuthService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly store: Store<{ charactersStore: CharactersState }>
   ) { }
 
   hasToken(): boolean {
@@ -48,6 +52,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.TOKEN_KEY);
+    this.store.dispatch(Actions.deleteCollection());
     this.isLoggedInSubject.next(false);
     this.router.navigate([Paths.CHARACTERS]);
   }

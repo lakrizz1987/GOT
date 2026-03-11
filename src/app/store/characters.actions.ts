@@ -18,4 +18,7 @@ export const removeFromFavorite = createAction(
 export const loadFavorites = createAction(
     '[Characters] Load Favorite',
 );
+export const deleteCollection = createAction(
+    '[Characters] Delete collections'
+)
 

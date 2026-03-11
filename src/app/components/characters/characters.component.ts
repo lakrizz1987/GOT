@@ -5,7 +5,6 @@ import { Character } from '../../models/character.model';
 import * as Actions from '../../store/characters.actions';
 import { Subscription } from 'rxjs';
 import { CharactersState } from '../../store/characters.state';
-import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-characters',
