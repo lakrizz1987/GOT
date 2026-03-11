@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paths } from '../../enums/paths.enum';
 import { AuthService } from '../../services/auth.service';
+import { Errors } from '../../enums/error.enum';
 
 @Component({
   selector: 'app-auth',
@@ -15,8 +16,8 @@ export class AuthComponent implements OnInit {
   username: string = '';
   password: string = '';
   repeatPassword: string = '';
-  invalidCredential: string = '';
-  
+  errorMessage: string = '';
+
   constructor(
     private readonly router: Router,
     private readonly authService: AuthService
@@ -28,22 +29,47 @@ export class AuthComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault();
-    if (this.isLoginFlow) {
-      this.onLogin();
+    this.errorMessage = '';
+    this.isLoginFlow ? this.onLogin() : this.onRegister();
+  }
+
+  onRegister() {
+    if (!this.username || !this.password || !this.repeatPassword) {
+      this.errorMessage = Errors.ALL_FIELDS_REQUIRED;
+      return;
+    }
+
+    if (this.password === this.repeatPassword) {
+      this.authService.register(this.username, this.password).subscribe({
+        next: () => {
+          this.router.navigate([this.paths.CHARACTERS]);
+        },
+        error: (err: any) => {
+          debugger
+          if (err.error === Errors.USER_EXIST) {
+            this.errorMessage = err.error;
+          } else {
+            this.router.navigate([this.paths.INTERNAL_ERROR]);
+          }
+        }
+      })
     }
   }
 
   onLogin() {
-    this.invalidCredential = '';
+    if (!this.username || !this.password) {
+      this.errorMessage = Errors.ALL_FIELDS_REQUIRED;
+      return;
+    }
+
     this.authService.login(this.username, this.password).subscribe({
-      next: (response) => {
+      next: () => {
         this.router.navigate([this.paths.CHARACTERS]);
       },
       error: (err: any) => {
-        console.log(err)
-        if (err.error === 'Invalid credentials') {
-          this.invalidCredential = err.error;
-        }else {
+        if (err.error === Errors.INVALID_CREDENTIALS) {
+          this.errorMessage = err.error;
+        } else {
           this.router.navigate([this.paths.INTERNAL_ERROR]);
         }
       }
