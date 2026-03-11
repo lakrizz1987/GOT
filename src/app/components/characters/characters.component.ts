@@ -23,8 +23,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadCharacters();
-    const sub = this.store.select(state => state.charactersStore.characters).subscribe(characters => {
-      console.log(characters);
+    const sub = this.store.select((state: { charactersStore: CharactersState }) => state.charactersStore.characters).subscribe(characters => {
       this.characters = characters;
     });
     this.subscriptions.push(sub);

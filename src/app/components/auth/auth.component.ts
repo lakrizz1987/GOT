@@ -7,11 +7,16 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-auth',
   standalone: false,
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+  styleUrl: './auth.component.scss',
 })
 export class AuthComponent implements OnInit {
   isLoginFlow: boolean = true;
   paths = Paths;
+  username: string = '';
+  password: string = '';
+  repeatPassword: string = '';
+  invalidCredential: string = '';
+  
   constructor(
     private readonly router: Router,
     private readonly authService: AuthService
@@ -21,8 +26,27 @@ export class AuthComponent implements OnInit {
     this.isLoginFlow = this.router.url.includes(this.paths.LOGIN);
   }
 
-  onLogin(event: Event) {
+  onSubmit(event: Event) {
     event.preventDefault();
-    this.authService.saveToken('asd');
+    if (this.isLoginFlow) {
+      this.onLogin();
+    }
+  }
+
+  onLogin() {
+    this.invalidCredential = '';
+    this.authService.login(this.username, this.password).subscribe({
+      next: (response) => {
+        this.router.navigate([this.paths.CHARACTERS]);
+      },
+      error: (err: any) => {
+        console.log(err)
+        if (err.error === 'Invalid credentials') {
+          this.invalidCredential = err.error;
+        }else {
+          this.router.navigate([this.paths.INTERNAL_ERROR]);
+        }
+      }
+    });
   }
 }
