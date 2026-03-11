@@ -6,10 +6,16 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    background: linear-gradient(rgba($got-black, 0.3), rgba($got-black, 0.3)),
+        url('/assets/backgrounds/flags-black.jpg');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: space;
 
     .form {
         width: 100%;
         max-width: 450px;
+        background-color: $got-black;
         border: 2px solid $got-gold-dark;
         padding: 30px;
 

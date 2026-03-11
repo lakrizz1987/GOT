@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { Character } from '../../models/character.model';
 import { CHARACTER_IMAGES } from '../../services/characters.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { debounceTime, distinctUntilChanged, fromEvent, map, Subscription } from
   templateUrl: './character-list.component.html',
   styleUrl: './character-list.component.scss'
 })
-export class CharacterListComponent implements AfterViewInit, OnDestroy {
+export class CharacterListComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() set characters(data: Character[]) {
     this.allCharacters = data;
     this.filteredCharacters = data;
@@ -22,18 +22,23 @@ export class CharacterListComponent implements AfterViewInit, OnDestroy {
   filteredCharacters: Character[] = [];
   characterImageMap = CHARACTER_IMAGES;
   imgLoaded: boolean = false;
+  isFavoritesPage: boolean = true;
   private searchSubscription: Subscription | null = null;
 
   constructor(
     private readonly router: Router,
     public spinnerService: SpinnerService
   ) { }
+
+  ngOnInit() {
+    this.isFavoritesPage = this.router.url.includes(Paths.FAVORITES);
+  }
   ngAfterViewInit() {
     setTimeout(() => {
       if (!this.inputElement) {
         return;
       }
-      
+
       this.searchSubscription = fromEvent(this.inputElement.nativeElement, 'input')
         .pipe(
           map(event => (event.target as HTMLInputElement).value),
