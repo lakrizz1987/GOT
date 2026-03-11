@@ -9,7 +9,6 @@
     padding: 0 30px;
     background-color: $got-black;
     color: $got-white;
-    //position: relative;
     z-index: $z-index-navbar;
 
     ul {
@@ -30,48 +29,54 @@
         transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
         img {
-            width: 180px;
+            width: 150px;
 
-            @media (max-width: $max-mobile-width) {
-                width: 150px;
+            @media (min-width: $min-tablet-width) {
+                width: 180px;
             }
         }
     }
 
     .navbar-links {
+        width: 100%;
+        height: calc(100vh - $navbar-height);
         display: flex;
+        flex-direction: column;
         gap: 24px;
+        position: absolute;
+        top: $navbar-height;
+        left: -150vw;
+        z-index: $z-index-navbar - 1;
+        background-color: $got-black;
+        padding: 40px 0 40px 40px;
         list-style: none;
+        transition: left 0.5s linear;
 
-        @media (max-width: $max-mobile-width) {
-            width: 100%;
-            height: calc(100vh - #{$navbar-height + 1px});
-            flex-direction: column;
-            position: absolute;
-            z-index: $z-index-navbar - 1;
-            top: $navbar-height;
-            left: -150vw;
-            background-color: $got-black;
-            padding: 40px;
-            transition: all 0.5s linear;
-
-            &.active {
-                left: 0;
-            }
+        &.active {
+            left: 0;
         }
 
-        &.desktop-menu {
-            @media (max-width: $max-mobile-width) {
-                display: none;
-            }
+        @media(min-width: $min-tablet-width) {
+            position: static;
+            flex-direction: row;
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .desktop-menu {
+        display: none;
+
+        @media (min-width: $min-tablet-width) {
+            display: flex;
         }
     }
 
     .mobile-menu {
-        display: none;
+        display: block;
 
-        @media(max-width: $max-mobile-width) {
-            display: block;
+        @media (min-width: $min-tablet-width) {
+            display: none;
         }
     }
 
@@ -83,16 +88,12 @@
         cursor: pointer;
 
         img {
-            width: 100px;
+            width: 80px;
             display: inline-block;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 
             &.rotate {
                 transform: rotate(360deg);
-            }
-
-            @media (max-width: $max-mobile-width) {
-                width: 80px;
             }
         }
     }

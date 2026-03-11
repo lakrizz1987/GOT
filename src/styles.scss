@@ -32,6 +32,10 @@ body {
     background-color: $got-black;
 }
 
+.no-scroll {
+    overflow-y: hidden;
+}
+
 #measure-container {
     width: 100%;
     height: 0;
