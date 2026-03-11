@@ -19,7 +19,7 @@ export class AuthService {
     private readonly router: Router
   ) { }
 
-  private hasToken(): boolean {
+  hasToken(): boolean {
     return !!localStorage.getItem(this.TOKEN_KEY);
   }
 

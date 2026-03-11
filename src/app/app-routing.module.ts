@@ -8,14 +8,15 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
 import { AuthComponent } from './components/auth/auth.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
   { path: Paths.CHARACTERS, component: CharactersComponent },
-  { path: Paths.FAVORITES, component: FavoritesComponent },
+  { path: Paths.FAVORITES, component: FavoritesComponent, canActivate: [authGuard] },
   { path: `${Paths.DETAILS}/:id`, component: DetailsComponent },
-  { path: Paths.LOGIN, component: AuthComponent },
-  { path: Paths.REGISTER, component: AuthComponent },
+  { path: Paths.LOGIN, component: AuthComponent, canActivate: [authGuard] },
+  { path: Paths.REGISTER, component: AuthComponent, canActivate: [authGuard] },
   { path: Paths.LOGOUT, component: LogoutComponent },
   { path: Paths.INTERNAL_ERROR, component: InternalErrorComponent },
   { path: '**', redirectTo: Paths.INTERNAL_ERROR, pathMatch: 'full' }
