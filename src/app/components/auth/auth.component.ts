@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Paths } from '../../enums/paths.enum';
 import { AuthService } from '../../services/auth.service';
 import { Errors } from '../../enums/error.enum';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',
@@ -44,7 +45,7 @@ export class AuthComponent implements OnInit {
         next: () => {
           this.onLogin();
         },
-        error: (err: any) => {
+        error: (err: HttpErrorResponse) => {
           if (err.error === Errors.USER_EXIST) {
             this.errorMessage = err.error;
           } else {
@@ -67,7 +68,7 @@ export class AuthComponent implements OnInit {
       next: () => {
         this.router.navigate([this.paths.CHARACTERS]);
       },
-      error: (err: any) => {
+      error: (err: HttpErrorResponse) => {
         if (err.error === Errors.INVALID_CREDENTIALS) {
           this.errorMessage = err.error;
         } else {

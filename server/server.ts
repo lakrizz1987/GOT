@@ -60,7 +60,6 @@ app.post('/login', async (req, res) => {
             return res.send({ token });
         }
     }
-    
     res.status(400).send("Invalid credentials");
 });
 
