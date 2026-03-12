@@ -42,6 +42,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
+  /**
+   * - Uses `combineLatest` to reactively track both the API data and the Store's favorite list.
+   * - When either source emits a value, it updates the character details and recalculates 
+   * the 'isFavorite' status automatically.
+   * - Fetches related book names in parallel using `forkJoin` if they haven't been loaded yet.
+   */
   private setCharacterData() {
     const character$ = this.characterService.getCharacterById(this.characterId);
     const favorites$ = this.store.select(state => state.charactersStore.favoritesCharacters);

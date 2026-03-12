@@ -7,10 +7,20 @@ import { Character } from '../models/character.model';
   providedIn: 'root'
 })
 export class CharactersService {
-  private baseUrl = 'https://anapioficeandfire.com/api';
+  private readonly baseUrl = 'https://anapioficeandfire.com/api';
 
-  constructor(private readonly http: HttpClient) { }
-
+  constructor(
+    private readonly http: HttpClient
+  ) { }
+  /**
+   * Fetches characters from a specific book.
+   * 1. Gets the book details to obtain the list of character URLs.
+   * 2. Uses `mergeMap` to switch from the book stream to a character stream.
+   * 3. Uses `forkJoin` to execute multiple character requests in parallel.
+   * @param bookId The ID of the book (e.g., 1 for "A Game of Thrones").
+   * @param limit How many characters to fetch (default is 20).
+   * @returns An Observable array of Character objects.
+   */
   getCharactersByBook(bookId: number, limit: number = 20): Observable<Character[]> {
     return this.http.get<{ characters: string[] }>(`https://anapioficeandfire.com/api/books/${bookId}`).pipe(
       mergeMap(book => {

@@ -33,6 +33,16 @@ export class CharacterListComponent implements OnInit, AfterViewInit, OnDestroy 
   ngOnInit() {
     this.isFavoritesPage = this.router.url.includes(Paths.FAVORITES);
   }
+
+  /**
+   * Initializes the search functionality after the view has been fully initialized.
+   * * A `setTimeout` is used to ensure the `nativeElement` is fully accessible 
+   * * The stream performs the following steps:
+   * 1. Listens for the 'input' event on the search field.
+   * 2. Extracts the current input value.
+   * 3. Waits for a 500ms pause in typing (`debounceTime`) to prevent overloading the server or state.
+   * 4. Filters out redundant requests if the new value is identical to the previous one (`distinctUntilChanged`).
+   */
   ngAfterViewInit() {
     setTimeout(() => {
       if (!this.inputElement) {

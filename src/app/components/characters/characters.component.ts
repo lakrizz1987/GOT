@@ -24,6 +24,12 @@ export class CharactersComponent implements OnInit, OnDestroy {
     private readonly router: Router
   ) { }
 
+  /**
+   * Initializes the component and sets up the data stream.
+   * 1. Subscribes to the 'characters' state from the Store.
+   * 2. Automatically updates the local 'characters' array whenever the Store changes.
+   * 3. Triggers an API call only if the Store is empty (to avoid redundant network requests).
+   */
   ngOnInit() {
     const sub = this.store.select(state => state.charactersStore.characters)
       .subscribe(characters => {
