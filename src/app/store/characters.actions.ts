@@ -1,10 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { Character } from '../models/character.model';
 
-export const loadCharacters = createAction('[Characters] Load Characters');
-
-export const loadCharactersSuccess = createAction(
-    '[Characters] Load Characters Success',
+export const loadCharacters = createAction(
+    '[Characters] Load Characters',
     props<{ characters: Character[] }>()
 );
 export const addToFavorite = createAction(

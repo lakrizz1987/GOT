@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './internal-error.component.html',
   styleUrl: './internal-error.component.scss'
 })
-export class InternalErrorComponent {
-
-}
+export class InternalErrorComponent { }

@@ -13,11 +13,4 @@
     background-size: contain;
     background-position: center top;
     background-repeat: no-repeat;
-
-    @media (min-width: 768px) {
-
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-
-    }
 }

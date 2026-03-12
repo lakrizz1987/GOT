@@ -57,10 +57,10 @@
         }
 
         @media(min-width: $min-tablet-width) {
+            width: auto;
+            height: 100%;
             position: static;
             flex-direction: row;
-            height: 100%;
-            width: auto;
         }
     }
 
@@ -82,8 +82,8 @@
 
     .navbar-toggle {
         height: 100%;
-        border: none;
         padding: 0;
+        border: none;
         background-color: $got-black;
         cursor: pointer;
 

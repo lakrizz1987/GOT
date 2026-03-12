@@ -12,8 +12,8 @@ import { Subscription } from 'rxjs';
   styleUrl: './favorites.component.scss'
 })
 export class FavoritesComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = []
   favoriteCharacters: Character[] = [];
-  subscriptions: Subscription[] = []
 
   constructor(
     private readonly store: Store<{ charactersStore: CharactersState }>

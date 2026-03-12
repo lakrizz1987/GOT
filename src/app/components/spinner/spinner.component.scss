@@ -1,14 +1,15 @@
+@use '../../definitions.scss'as *;
 
 .spinner-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: $got-spinner-background;
     z-index: 9999;
 }
 
@@ -20,11 +21,11 @@
 }
 
 .lds-spinner {
-    color: rgb(186 186 186);
-    display: inline-block;
-    position: relative;
     width: 80px;
     height: 80px;
+    display: inline-block;
+    position: relative;
+    color: $got-spinner-color;
 }
 
 .lds-spinner div {

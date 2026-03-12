@@ -1,10 +1,11 @@
 // Colors
 $got-black: #000000;
 $got-white: #ffffff;
-$got-gray: #575757;
+$got-red: #DC143C;
 $got-gold-light: #f0e6d2;
 $got-gold-dark: #a7976e;
-$got-gold-shadow: rgba(167, 151, 110, 0.6);
+$got-spinner-background: rgba(0, 0, 0, 0.3);
+$got-spinner-color: rgb(186, 186, 186);
 
 // Fonts
 $got-font-family: 'GoT', 'Times New Roman', Times, serif;
@@ -13,9 +14,9 @@ $got-font-family: 'GoT', 'Times New Roman', Times, serif;
 $navbar-height: 98px;
 $z-index-navbar: 1000;
 
-// screen sizes
+// Screen sizes
+$min-desktop-width: 1366px;
 $min-mobile-width: 375px;
 $max-mobile-width: 767px;
-$min-desktop-width: 1366px;
-$min-tablet-width: ($max-mobile-width + 1px);
 $max-tablet-width: ($min-desktop-width - 1px);
+$min-tablet-width: ($max-mobile-width + 1px);

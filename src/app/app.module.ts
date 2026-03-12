@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { charactersReducer } from './store/characters.reducer';
-import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NavbarComponent } from './components/nav/nav.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -41,7 +41,6 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
     StoreModule.forRoot({ charactersStore: charactersReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],

@@ -15,9 +15,9 @@
     .form {
         width: 100%;
         max-width: 450px;
+        padding: 30px;
         background-color: $got-black;
         border: 2px solid $got-gold-dark;
-        padding: 30px;
 
         .title {
             margin-bottom: 30px;
@@ -32,10 +32,10 @@
 
             .form-label {
                 display: block;
+                margin-bottom: 8px;
                 color: $got-white;
                 font-family: $got-font-family;
                 font-size: 12px;
-                margin-bottom: 8px;
             }
 
             .form-input {
@@ -59,7 +59,7 @@
             font-size: 13px;
             font-style: italic;
             text-align: center;
-            color: red;
+            color: $got-red;
         }
 
         .buttons-container {
@@ -67,9 +67,9 @@
 
             button {
                 width: 100%;
-                background: $got-black;
-                border: 1px solid $got-gold-dark;
                 padding: 15px;
+                border: 1px solid $got-gold-dark;
+                background: $got-black;
                 cursor: pointer;
                 transition: all 0.3s ease;
 

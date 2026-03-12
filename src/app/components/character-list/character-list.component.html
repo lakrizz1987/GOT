@@ -8,7 +8,7 @@
     >
 </div>
 <div class="card-wrapper" *ngIf="filteredCharacters.length > 0">
-    <div class="hero" *ngFor="let hero of filteredCharacters; let i = index;"
+    <div class="hero" *ngFor="let hero of filteredCharacters;"
         (click)="goToHeroDetails(hero.url)">
         <img [src]="characterImageMap[hero.name] || characterImageMap['default']" alt="character-img"
             (load)="imgLoaded = true" [class.loaded]="imgLoaded" loading="lazy">

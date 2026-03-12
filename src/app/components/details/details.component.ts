@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CHARACTER_IMAGES, CharactersService } from '../../services/characters.service';
+import * as Actions from '../../store/characters.actions';
 import { Character } from '../../models/character.model';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, forkJoin, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as Actions from '../../store/characters.actions';
 import { CharactersState } from '../../store/characters.state';
 import { Location } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
@@ -16,12 +16,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit, OnDestroy {
+  private characterId: string = '';
+  private subscriptions: Subscription[] = [];
   characterImageMap = CHARACTER_IMAGES;
   character: Character | null = null;
-  characterId: string = '';
   bookNames: string[] = [];
   isFavorite: boolean = false;
-  subscriptions: Subscription[] = [];
 
   constructor(
     private readonly characterService: CharactersService,

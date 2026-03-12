@@ -5,7 +5,7 @@
         </div>
 
         <div class="info-container">
-            <h1 class="character-name">{{ character.name || 'Unknown Identity' }}</h1>
+            <h1 class="character-name">{{ character.name || 'Unknown' }}</h1>
 
             <div class="data-group" *ngIf="character.titles.length">
                 <h3>Titles</h3>
@@ -32,7 +32,8 @@
                 <p>{{ character.tvSeries | join }}</p>
             </div>
             <div class="buttons">
-                <div *ngIf="authService.isLoggedIn$ | async" class="got-button favorite-action"
+                <div *ngIf="authService.isLoggedIn$ | async" 
+                    class="got-button favorite-action"
                     [class.active]="isFavorite"
                     (click)="isFavorite ? removeFromFavorites(character) : addToFavorite(character)">
                     <span class="heart-icon">&hearts;</span>

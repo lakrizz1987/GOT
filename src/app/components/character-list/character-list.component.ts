@@ -18,12 +18,12 @@ export class CharacterListComponent implements OnInit, AfterViewInit, OnDestroy 
     this.filteredCharacters = data;
   }
   @ViewChild('inputElement', { static: true }) inputElement: ElementRef<HTMLInputElement> | undefined;
-  allCharacters: Character[] = [];
+  private allCharacters: Character[] = [];
+  private searchSubscription: Subscription | null = null;
   filteredCharacters: Character[] = [];
-  characterImageMap = CHARACTER_IMAGES;
   imgLoaded: boolean = false;
   isFavoritesPage: boolean = true;
-  private searchSubscription: Subscription | null = null;
+  characterImageMap = CHARACTER_IMAGES;
 
   constructor(
     private readonly router: Router,

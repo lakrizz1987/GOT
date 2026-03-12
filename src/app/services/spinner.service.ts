@@ -5,6 +5,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 
+/**
+ * Service for managing the global loading spinner state.
+ * Uses a counter to track active HTTP requests, ensuring 
+ * the spinner remains visible until the last request has completed.
+ */
 export class SpinnerService {
   private activeRequests = 0;
   private readonly visibility$ = new BehaviorSubject<boolean>(false);

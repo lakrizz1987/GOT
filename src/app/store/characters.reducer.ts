@@ -5,7 +5,7 @@ import { initialState } from './characters.state';
 export const charactersReducer = createReducer(
     initialState,
 
-    on(Actions.loadCharactersSuccess, (state, { characters }) => ({
+    on(Actions.loadCharacters, (state, { characters }) => ({
         ...state,
         characters
     })),

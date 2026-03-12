@@ -28,7 +28,6 @@
     border-image-slice: 100;
     border-image-repeat: stretch;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 
     &::placeholder {
         color: rgba($got-white, 0.5);
@@ -49,11 +48,11 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
     .hero {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         cursor: pointer;
-        width: 100%;
 
         img {
             width: 80%;
@@ -61,12 +60,12 @@
             max-width: 300px;
             object-fit: cover;
             opacity: 0;
-            transition: all 0.3s ease;
             border: 12px solid transparent;
             border-image-source: url('/assets/border/509.jpg');
             border-image-slice: 200;
             border-image-repeat: stretch;
             box-shadow: rgba(0, 0, 0, 0.5) 20px 3px 8px;
+            transition: all 0.3s ease;
 
             &.loaded {
                 opacity: 1;
@@ -82,12 +81,12 @@
         }
 
         .name {
+            margin-top: 22px;
             color: $got-white;
             font-family: $got-font-family;
             font-size: 22px;
             letter-spacing: 1px;
             text-align: center;
-            margin-top: 22px;
         }
     }
 }
@@ -96,13 +95,13 @@
     width: 100%;
 
     h3 {
+        margin-top: 40px;
         font-family: $got-font-family;
         font-size: 36px;
         color: $got-white;
         text-align: center;
         letter-spacing: 5px;
         line-height: 1.8;
-        margin-top: 40px;
 
     }
 }

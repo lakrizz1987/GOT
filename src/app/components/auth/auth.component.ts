@@ -13,11 +13,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AuthComponent implements OnInit {
   isLoginFlow: boolean = true;
-  paths = Paths;
   username: string = '';
   password: string = '';
   repeatPassword: string = '';
   errorMessage: string = '';
+  paths = Paths;
 
   constructor(
     private readonly router: Router,

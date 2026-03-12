@@ -5,5 +5,5 @@ export enum Paths {
     LOGIN = 'login',
     REGISTER = 'register',
     LOGOUT = 'logout',
-    INTERNAL_ERROR = 'iternalError'
+    INTERNAL_ERROR = 'internalError'
 }

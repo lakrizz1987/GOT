@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import * as Actions from '../../store/characters.actions';
 import { Store } from '@ngrx/store';
 import { CharactersService } from '../../services/characters.service';
 import { Character } from '../../models/character.model';
-import * as Actions from '../../store/characters.actions';
 import { Subscription } from 'rxjs';
 import { CharactersState } from '../../store/characters.state';
 import { Router } from '@angular/router';
@@ -16,8 +16,9 @@ import { Paths } from '../../enums/paths.enum';
   styleUrl: './characters.component.scss'
 })
 export class CharactersComponent implements OnInit, OnDestroy {
+  private bookNumber: number = 1;
+  private subscriptions: Subscription[] = [];
   characters: Character[] = [];
-  subscriptions: Subscription[] = [];
   constructor(
     private readonly store: Store<{ charactersStore: CharactersState }>,
     private readonly service: CharactersService,
@@ -48,9 +49,9 @@ export class CharactersComponent implements OnInit, OnDestroy {
   }
 
   loadCharacters() {
-    this.service.getCharactersByBook(1).subscribe({
+    this.service.getCharactersByBook(this.bookNumber).subscribe({
       next: (data: Character[]) => {
-        this.store.dispatch(Actions.loadCharactersSuccess({ characters: data }));
+        this.store.dispatch(Actions.loadCharacters({ characters: data }));
       },
       error: (err) => {
         this.router.navigate([Paths.INTERNAL_ERROR]);
