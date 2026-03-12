@@ -42,10 +42,9 @@ export class AuthComponent implements OnInit {
     if (this.password === this.repeatPassword) {
       this.authService.register(this.username, this.password).subscribe({
         next: () => {
-          this.router.navigate([this.paths.LOGIN]);
+          this.onLogin();
         },
         error: (err: any) => {
-          debugger
           if (err.error === Errors.USER_EXIST) {
             this.errorMessage = err.error;
           } else {
@@ -53,6 +52,8 @@ export class AuthComponent implements OnInit {
           }
         }
       })
+    } else {
+      this.errorMessage = Errors.PASS_NOT_MATCH;
     }
   }
 

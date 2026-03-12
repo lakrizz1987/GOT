@@ -54,7 +54,6 @@ app.post('/login', async (req, res) => {
     const user = users.find(user => user.username === username);
     if (user) {
         const isMatch = await bcrypt.compare(password, user.password);
-        console.log(isMatch)
 
         if (isMatch) {
             const token = jwt.sign({ username }, JWT_SECRET);

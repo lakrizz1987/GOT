@@ -5,6 +5,9 @@ import { Character } from '../../models/character.model';
 import * as Actions from '../../store/characters.actions';
 import { Subscription } from 'rxjs';
 import { CharactersState } from '../../store/characters.state';
+import { Router } from '@angular/router';
+import { Paths } from '../../enums/paths.enum';
+
 
 @Component({
   selector: 'app-characters',
@@ -18,6 +21,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
   constructor(
     private readonly store: Store<{ charactersStore: CharactersState }>,
     private readonly service: CharactersService,
+    private readonly router: Router
   ) { }
 
   ngOnInit() {
@@ -43,7 +47,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
         this.store.dispatch(Actions.loadCharactersSuccess({ characters: data }));
       },
       error: (err) => {
-        console.error(err);
+        this.router.navigate([Paths.INTERNAL_ERROR]);
       }
     });
   }
