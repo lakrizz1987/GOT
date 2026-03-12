@@ -21,10 +21,6 @@ export class CharactersService {
     );
   }
 
-  getCharacters(): Observable<Character[]> {
-    return this.http.get<Character[]>(`${this.baseUrl}/characters?page=1&pageSize=100`);
-  }
-
   getCharacterById(id: string): Observable<Character> {
     return this.http.get<Character>(`${this.baseUrl}/characters/${id}`);
   }
@@ -36,7 +32,7 @@ export class CharactersService {
 
 export const CHARACTER_IMAGES: { [key: string]: string } = {
   'Walder': '/assets/heroes/walder.webp',
-  'Balon Greyjoy': 'assets/heroes/balon-greyjoy.webp',
+  'Balon Greyjoy': '/assets/heroes/balon-greyjoy.webp',
   'Margaery Tyrell': '/assets/heroes/margaery-tyrell.webp',
   'Mordane': '/assets/heroes/mordane.webp',
   'Tywin Lannister': '/assets/heroes/tywin-lannister.webp',
