@@ -23,8 +23,9 @@ describe('InternalErrorComponent', () => {
 
   it('should have the correct text in h2', () => {
     fixture.detectChanges();
-    let compiler = fixture.nativeElement as HTMLElement;
-    let h2 = compiler.querySelector('h2');
+    let compiled = fixture.nativeElement as HTMLElement;
+    let h2 = compiled.querySelector('h2');
+    
     expect(h2?.textContent).toBe('Even Valyrian steel could not prevent this error. Something has gone wrong in the Realm');
   })
 });

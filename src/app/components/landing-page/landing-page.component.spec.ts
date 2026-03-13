@@ -29,9 +29,10 @@ describe('LandingPageComponent', () => {
   });
 
   it('second h3 content should be "Valar Dohaeris..."', () => {
-        fixture.detectChanges();
-    let compiler = fixture.nativeElement as HTMLElement;
-    let h3Element = compiler.getElementsByTagName('h3')[1];
+    fixture.detectChanges();
+    let compiled = fixture.nativeElement as HTMLElement;
+    let h3Element = compiled.getElementsByTagName('h3')[1];
+    
     expect(h3Element.textContent).toBe('Valar Dohaeris...');
   })
 });
