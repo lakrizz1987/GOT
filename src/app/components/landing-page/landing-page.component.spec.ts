@@ -10,7 +10,7 @@ describe('LandingPageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LandingPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LandingPageComponent);
     component = fixture.componentInstance;
@@ -20,4 +20,14 @@ describe('LandingPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('first h3 content should be "Valar Morghulis..."', () => {
+    let h3Element = document.getElementsByTagName('h3')[0];
+    expect(h3Element.textContent).toBe('Valar Morghulis...');
+  });
+
+  it('second h3 content should be "Valar Dohaeris..."', () => {
+    let h3Element = document.getElementsByTagName('h3')[1];
+    expect(h3Element.textContent).toBe('Valar Dohaeris...');
+  })
 });
