@@ -10,7 +10,7 @@ describe('InternalErrorComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [InternalErrorComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InternalErrorComponent);
     component = fixture.componentInstance;
@@ -20,4 +20,11 @@ describe('InternalErrorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have the correct text in h2', () => {
+    fixture.detectChanges();
+    let compiler = fixture.nativeElement as HTMLElement;
+    let h2 = compiler.querySelector('h2');
+    expect(h2?.textContent).toBe('Even Valyrian steel could not prevent this error. Something has gone wrong in the Realm');
+  })
 });

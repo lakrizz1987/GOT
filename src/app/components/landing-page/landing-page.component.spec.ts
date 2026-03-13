@@ -22,12 +22,16 @@ describe('LandingPageComponent', () => {
   });
 
   it('first h3 content should be "Valar Morghulis..."', () => {
-    let h3Element = document.getElementsByTagName('h3')[0];
+    fixture.detectChanges();
+    let compiler = fixture.nativeElement as HTMLElement;
+    let h3Element = compiler.getElementsByTagName('h3')[0];
     expect(h3Element.textContent).toBe('Valar Morghulis...');
   });
 
   it('second h3 content should be "Valar Dohaeris..."', () => {
-    let h3Element = document.getElementsByTagName('h3')[1];
+        fixture.detectChanges();
+    let compiler = fixture.nativeElement as HTMLElement;
+    let h3Element = compiler.getElementsByTagName('h3')[1];
     expect(h3Element.textContent).toBe('Valar Dohaeris...');
   })
 });
