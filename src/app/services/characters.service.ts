@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, mergeMap, Observable } from 'rxjs';
 import { Character } from '../models/character.model';
+import { Book } from '../models/book.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,8 @@ export class CharactersService {
     return this.http.get<Character>(`${this.baseUrl}/characters/${id}`);
   }
 
-  getCharacterBooks(bookUrl: string) {
-    return this.http.get<any>(bookUrl);
+  getCharacterBooks(bookUrl: string): Observable<Book> {
+    return this.http.get<Book>(bookUrl);
   }
 }
 

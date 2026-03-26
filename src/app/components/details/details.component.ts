@@ -1,13 +1,13 @@
+import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { combineLatest, forkJoin, map, of, Subscription, switchMap } from 'rxjs';
+import { Character } from '../../models/character.model';
+import { AuthService } from '../../services/auth.service';
 import { CHARACTER_IMAGES, CharactersService } from '../../services/characters.service';
 import * as Actions from '../../store/characters.actions';
-import { Character } from '../../models/character.model';
-import { ActivatedRoute } from '@angular/router';
-import { combineLatest, forkJoin, Subscription } from 'rxjs';
-import { Store } from '@ngrx/store';
 import { CharactersState } from '../../store/characters.state';
-import { Location } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-details',
@@ -51,15 +51,22 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private setCharacterData() {
     const character$ = this.characterService.getCharacterById(this.characterId);
     const favorites$ = this.store.select(state => state.charactersStore.favoritesCharacters);
-    const sub = combineLatest([character$, favorites$]).subscribe(([character, favorites]) => {
-      this.character = character;
-      this.isFavorite = favorites.some(fav => fav.name === this.character?.name);
+    const sub = combineLatest([character$, favorites$]).pipe(
+      switchMap(([character, favorites]) => {
+        this.character = character;
+        this.isFavorite = favorites.some(fav => fav.name === this.character?.name);
 
-      if (this.bookNames.length === 0 && character.books?.length > 0) {
-        const bookRequests = character.books.map(url => this.characterService.getCharacterBooks(url));
-        forkJoin(bookRequests).subscribe(books => this.bookNames = books.map(b => b.name));
-      }
-    });
+        if (this.bookNames.length === 0 && character.books?.length > 0) {
+          const bookRequests = character.books.map(url => this.characterService.getCharacterBooks(url));
+          return forkJoin(bookRequests).pipe(
+            map(books => books.map(b => b.name))
+          );
+        } else {
+          return of(this.bookNames)
+        }
+      })
+    ).subscribe(bookNames => this.bookNames = bookNames);
+
     this.subscriptions.push(sub);
   }
 

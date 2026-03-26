@@ -1,3 +1,3 @@
 <div class="favorites-wrapper">
-    <app-character-list [characters]="favoriteCharacters"></app-character-list>
+    <app-character-list [characters]="(favoriteCharacters$ | async) || []"></app-character-list>
 </div>

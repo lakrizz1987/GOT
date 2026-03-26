@@ -20,6 +20,8 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
 import { AuthComponent } from './components/auth/auth.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CharactersEffect } from './store/characters.effects';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     AppRoutingModule,
     FormsModule,
     StoreModule.forRoot({ charactersStore: charactersReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([CharactersEffect])
   ],
   providers: [
     provideHttpClient(

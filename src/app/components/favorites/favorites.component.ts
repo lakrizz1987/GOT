@@ -3,7 +3,8 @@ import { Store } from '@ngrx/store';
 import { Character } from '../../models/character.model';
 import * as Actions from '../../store/characters.actions'
 import { CharactersState } from '../../store/characters.state';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { selectFavorites } from '../../store/characters.selector';
 
 @Component({
   selector: 'app-favorites',
@@ -11,23 +12,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.scss'
 })
-export class FavoritesComponent implements OnInit, OnDestroy {
-  private subscriptions: Subscription[] = []
-  favoriteCharacters: Character[] = [];
+export class FavoritesComponent {
+  favoriteCharacters$: Observable<Character[]>;
 
   constructor(
     private readonly store: Store<{ charactersStore: CharactersState }>
-  ) { }
-
-  ngOnInit() {
-    this.store.dispatch(Actions.loadFavorites());
-    const sub = this.store.select(state => state.charactersStore.favoritesCharacters).subscribe(favorites => {
-      this.favoriteCharacters = favorites;
-    });
-    this.subscriptions.push(sub);
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+  ) {
+    this.favoriteCharacters$ = this.store.select(selectFavorites);
   }
 }

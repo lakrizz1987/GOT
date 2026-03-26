@@ -5,9 +5,14 @@ import { initialState } from './characters.state';
 export const charactersReducer = createReducer(
     initialState,
 
-    on(Actions.loadCharacters, (state, { characters }) => ({
+    on(Actions.loadCharactersSuccess, (state, { characters }) => ({
         ...state,
         characters
+    })),
+
+    on(Actions.loadCharactersFailure, (state) => ({
+        ...state,
+        characters: []
     })),
 
     on(Actions.loadFavorites, (state) => ({
@@ -30,7 +35,7 @@ export const charactersReducer = createReducer(
         ...state,
         favoritesCharacters: state.favoritesCharacters.filter(ch => ch.name !== character.name)
     })),
-    
+
     on(Actions.deleteCollection, (state) => ({
         ...state,
         characters: [],
